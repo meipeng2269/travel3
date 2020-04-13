@@ -6,5 +6,5 @@
 
 <style lang="stylus">
 html, body, #app
-  height 100%
+  height
 </style>
