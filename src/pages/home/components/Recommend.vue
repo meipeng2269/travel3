@@ -25,6 +25,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~@/assets/styles/varibles.styl'
+@import '~@/assets/styles/mixins.styl'
 .recommend-title
   height .44rem
   line-height .44rem
@@ -42,6 +43,7 @@ export default {
       width 100%
   .recommend-info
     flex 1
+    min-width 0
     padding-left .24rem
     .recommend-info-title
       margin-top .26rem
@@ -49,13 +51,16 @@ export default {
       line-height .44rem
       font-size .32rem
       color $blackTextColor
+      ellipsis()
     .recommend-info-comment
       margin-top .14rem
       height .34rem
       font-size .24rem
       vertical-align text-bottom
+      ellipsis()
     .recommend-info-price
       margin-top .22rem
       line-height .4rem
       font-size .24rem
+      ellipsis()
 </style>

@@ -7,10 +7,12 @@
       <span class="iconfont">&#xe680;</span>
       <span class="content">输入城市/景点/游玩主题</span>
     </div>
-    <div class="header-right">
-      <span>{{ city }}</span>
-      <span class="iconfont">&#xe6aa;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        <span>{{ city }}</span>
+        <span class="iconfont">&#xe6aa;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -52,4 +54,5 @@ export default {
       padding-left .1rem
   .header-right
     padding 0 .22rem
+    color #fff
 </style>
