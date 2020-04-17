@@ -7,7 +7,6 @@
         placeholder="输入城市名或拼音"
         v-model.trim="keyword"
       >
-      <div class="clear" v-if="keyword">清除</div>
     </div>
     <div class="search-content" ref="wrapper" v-show="keyword">
       <ul>
@@ -15,7 +14,7 @@
           class="item border-bottom"
           v-for="item of this.list"
           :key="item.id"
-          @click="handleCityClick"
+          @click="handleCityClick(item.city)"
         >{{ item.city }}</li>
         <li class="item" v-if="hasNoData">没有找到对应城市</li>
       </ul>
@@ -25,6 +24,7 @@
 
 <script>
 import BScroll from 'better-scroll'
+import { mapActions } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -38,14 +38,16 @@ export default {
     }
   },
   methods: {
-    handleCityClick (e) {
-      this.$emit('change', e.target.innerHTML)
-      this.keyword = ''
+    handleCityClick (city) {
+      this.changeCity(city)
       this.$router.push('/')
-    }
+    },
+    ...mapActions(['changeCity'])
   },
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      click: true
+    })
   },
   watch: {
     keyword () {

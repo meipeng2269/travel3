@@ -29,7 +29,7 @@ export default {
 .recommend-title
   height .44rem
   line-height .44rem
-  padding .24rem 0 .26rem .2rem
+  padding .14rem 0 .26rem .2rem
   font-size .32rem
   color $blackTextColor
 .recommend-container

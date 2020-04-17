@@ -5,14 +5,19 @@
         <div class="title">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <button class="button">北京</button>
+            <button class="button">{{ lastCity }}</button>
           </div>
         </div>
       </div>
       <div class="area border-bottom">
         <div class="title">热门城市</div>
         <ul class="button-list">
-          <li class="button-wrapper" v-for="item of hotCities" :key="item.id">
+          <li
+            class="button-wrapper"
+            v-for="item of hotCities"
+            :key="item.id"
+            @click="handleCityClick(item.name)"
+          >
             <button class="button">{{ item.name }}</button>
           </li>
         </ul>
@@ -20,7 +25,12 @@
       <div class="area border-bottom" v-for="(value, name) in cities" :key="name" :ref="name">
         <div class="title">{{ name }}</div>
         <ul class="item-list">
-          <li class="item border-bottom" v-for="item of value" :key="item.id" @click="handleCityClick">{{ item.name }}</li>
+          <li
+            class="item border-bottom"
+            v-for="item of value"
+            :key="item.id"
+            @click="handleCityClick(item.name)"
+          >{{ item.name }}</li>
         </ul>
       </div>
     </div>
@@ -29,6 +39,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'CityList',
   data () {
@@ -41,8 +52,10 @@ export default {
     cities: Object,
     letter: String
   },
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+  computed: {
+    ...mapState({
+      lastCity: 'city'
+    })
   },
   watch: {
     letter () {
@@ -53,9 +66,16 @@ export default {
     }
   },
   methods: {
-    handleCityClick (e) {
-      this.city = e.target.innerHTML
-    }
+    handleCityClick (city) {
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapActions(['changeCity'])
+  },
+  mounted () {
+    this.scroll = new Bscroll(this.$refs.wrapper, {
+      click: true
+    })
   }
 }
 </script>
