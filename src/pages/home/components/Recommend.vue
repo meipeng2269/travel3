@@ -1,7 +1,13 @@
 <template>
   <div>
     <div class="recommend-title">热销推荐</div>
-    <div class="recommend-container border-bottom" v-for="item of recommendList" :key="item.id">
+    <router-link
+      tag="div"
+      class="recommend-container border-bottom"
+      v-for="item of recommendList"
+      :key="item.id"
+      :to="'/detail/' + item.id"
+    >
       <div class="recommend-img-wrapper">
         <img class="recommend-img" :src="item.imgUrl">
       </div>
@@ -10,7 +16,7 @@
         <div class="recommend-info-comment">31720条评论</div>
         <div class="recommend-info-price">¥140</div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
