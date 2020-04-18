@@ -33,17 +33,7 @@ export default {
   },
   data () {
     return {
-      showGallery: false,
-      imgs: [{
-        id: 1,
-        imgUrl: 'https://imgs.qunarzz.com/sight/p0/1505/d2/d274c92de14c93da.water.jpg_r_800x800_9b38d300.jpg'
-      }, {
-        id: 2,
-        imgUrl: 'https://imgs.qunarzz.com/sight/p0/1910/21/2155967acb775f3ba3.img.jpg_r_800x800_3164041f.jpg'
-      }, {
-        id: 3,
-        imgUrl: 'https://imgs.qunarzz.com/sight/p0/1905/25/25f5e945d9a1f6f7a3.img.jpg_r_800x800_a315d1ee.jpg'
-      }]
+      showGallery: false
     }
   },
   methods: {
