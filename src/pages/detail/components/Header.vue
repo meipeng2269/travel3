@@ -7,7 +7,7 @@
       <router-link to="/" tag="div" class="header-left">
         <span class="iconfont">&#xe77f;</span>
       </router-link>
-      <div class="header-title">颐和园</div>
+      <div class="header-title">{{ sightName }}</div>
     </div>
   </div>
 </template>
@@ -15,6 +15,9 @@
 <script>
 export default {
   name: 'DetailHeader',
+  props: {
+    sightName: String
+  },
   data () {
     return {
       isShow: true,
@@ -60,6 +63,7 @@ export default {
   color #fff
   background rgba(0, 0, 0, .5)
 .header
+  z-index 1
   position fixed
   top 0
   left 0
