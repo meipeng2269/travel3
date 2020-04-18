@@ -10,17 +10,20 @@
       <div class="banner-title">{{ sightName }}</div>
     </div>
   </div>
-  <common-gallery
-    :imgs="imgs"
-    v-if="showGallery"
-    @close="handleGalleryClose"
-    :gallaryImgs="gallaryImgs"
-  ></common-gallery>
+  <fade-animation>
+    <common-gallery
+      :imgs="imgs"
+      v-if="showGallery"
+      @close="handleGalleryClose"
+      :gallaryImgs="gallaryImgs"
+    ></common-gallery>
+  </fade-animation>
 </div>
 </template>
 
 <script>
 import CommonGallery from '../../common/Gallery'
+import FadeAnimation from '../../common/fadeAnimation/FadeAnimation'
 export default {
   name: 'DeatilBanner',
   props: {
@@ -29,7 +32,8 @@ export default {
     gallaryImgs: Array
   },
   components: {
-    CommonGallery
+    CommonGallery,
+    FadeAnimation
   },
   data () {
     return {
